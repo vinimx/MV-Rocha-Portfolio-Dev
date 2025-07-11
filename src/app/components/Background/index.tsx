@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-const FundoThree = () => {
+const Background = () => {
   const refMontagem = useRef<HTMLDivElement>(null);
   const refQuadro = useRef<number>(0);
 
@@ -230,4 +230,4 @@ const FundoThree = () => {
   );
 };
 
-export default FundoThree;
+export default Background;

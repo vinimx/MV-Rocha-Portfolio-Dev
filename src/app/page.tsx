@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import MenuNav from "./components/MenuNav";
-import FundoThree from "./components/Background";
+import Background from "./components/Background";
 import Apresentacao from "./components/Apresentacao";
 import SobreMim from "./components/SobreMim";
 
@@ -48,7 +48,7 @@ export default function Home() {
       >
         {/* Three.js Background */}
         <div className="fixed inset-0 z-0">
-          <FundoThree />
+          <Background />
         </div>
         <MenuNav />
         <Apresentacao />
