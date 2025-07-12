@@ -5,6 +5,7 @@ import MenuNav from "./components/MenuNav";
 import Background from "./components/Background";
 import Apresentacao from "./components/Apresentacao";
 import SobreMim from "./components/SobreMim";
+import Tecnologias from "./components/Tecnologias";
 
 export default function Home() {
   const refPrincipal = useRef<HTMLElement>(null);
@@ -42,10 +43,7 @@ export default function Home() {
 
   return (
     <>
-      <main
-        ref={refPrincipal}
-        className="relative min-h-screen overflow-x-hidden"
-      >
+      <main ref={refPrincipal} className="relative">
         {/* Three.js Background */}
         <div className="fixed inset-0 z-0">
           <Background />
@@ -53,6 +51,7 @@ export default function Home() {
         <MenuNav />
         <Apresentacao />
         <SobreMim />
+        <Tecnologias />
       </main>
     </>
   );

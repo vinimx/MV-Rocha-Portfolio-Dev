@@ -5,7 +5,7 @@ export default function BotoesSociais() {
     <div className="absolute -bottom-24 left-1/2 transform -translate-x-1/2 flex gap-4 opacity-100 transition-all duration-500">
       {/* Botão GitHub */}
       <a
-        href="#"
+        href="https://github.com/vinimx"
         target="_blank"
         rel="noopener noreferrer"
         className="relative group/btn"
@@ -48,7 +48,7 @@ export default function BotoesSociais() {
 
       {/* Botão LinkedIn */}
       <a
-        href="#"
+        href="https://www.linkedin.com/in/marcos-vin%C3%ADcius-m-75934a110/"
         target="_blank"
         rel="noopener noreferrer"
         className="relative group/btn"

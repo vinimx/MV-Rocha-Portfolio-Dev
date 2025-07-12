@@ -90,6 +90,12 @@
     box-shadow: 0 0 20px #00f5ff, 0 0 40px #00f5ff, 0 0 60px #00f5ff;
   }
 
+  .bg-cartao {
+    background: rgba(51, 51, 51, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 0, 110, 0.2);
+  }
+
   .texto-glitch {
     position: relative;
   }
