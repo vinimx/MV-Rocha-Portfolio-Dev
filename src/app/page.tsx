@@ -6,6 +6,7 @@ import Background from "./components/Background";
 import Apresentacao from "./components/Apresentacao";
 import SobreMim from "./components/SobreMim";
 import Tecnologias from "./components/Tecnologias";
+import Projetos from "./components/Projetos";
 
 export default function Home() {
   const refPrincipal = useRef<HTMLElement>(null);
@@ -52,6 +53,7 @@ export default function Home() {
         <Apresentacao />
         <SobreMim />
         <Tecnologias />
+        <Projetos />
       </main>
     </>
   );
