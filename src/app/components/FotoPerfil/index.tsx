@@ -24,8 +24,10 @@ const FotoPerfil = () => {
             <Image
               src="/assets/images/perfil.png"
               alt="Foto de perfil de Marcos Vinicius Rocha"
-              width={384}
-              height={384}
+              width={320}
+              height={320}
+              sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, (max-width: 1024px) 288px, (max-width: 1280px) 320px, 384px"
+              quality={85}
               className="foto-perfil-image rounded-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:saturate-150 group-hover:brightness-110 w-full h-full"
               priority
               style={{
