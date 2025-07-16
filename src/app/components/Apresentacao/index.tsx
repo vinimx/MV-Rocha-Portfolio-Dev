@@ -23,10 +23,21 @@ export default function Apresentacao() {
     return () => clearTimeout(temporizador);
   }, []);
 
+  const navegarParaSecao = (secaoId: string) => {
+    const elemento = document.querySelector(`[data-section="${secaoId}"]`);
+    if (elemento) {
+      elemento.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    }
+  };
+
   return (
     <main
       data-section="home"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 overflow-hidden"
+      className="relative mt-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 overflow-hidden"
     >
       <section
         data-section="home"
@@ -62,11 +73,17 @@ export default function Apresentacao() {
         </div>
         {/* Container dos botões */}
         <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4 mt-4 sm:mt-6 md:mt-8">
-          <button className="w-full sm:w-auto px-6 sm:px-8 md:px-10 py-3 sm:py-4 botao-cyber font-orbitron font-bold text-sm sm:text-base md:text-lg flex items-center justify-center gap-2 sm:gap-3 group transition-all duration-300">
+          <button
+            onClick={() => navegarParaSecao("projetos")}
+            className="w-full sm:w-auto px-6 sm:px-8 md:px-10 py-3 sm:py-4 botao-cyber font-orbitron font-bold text-sm sm:text-base md:text-lg flex items-center justify-center gap-2 sm:gap-3 group transition-all duration-300"
+          >
             <span>Ver Projetos</span>
             <IoEyeSharp className="text-lg sm:text-xl md:text-2xl transition-all duration-300 group-hover:scale-110 group-hover:animate-pulse" />
           </button>
-          <button className="w-full sm:w-auto px-6 sm:px-8 md:px-10 py-3 sm:py-4 bg-transparent border-2 border-destaque text-destaque font-orbitron font-bold text-sm sm:text-base md:text-lg hover:bg-destaque hover:text-black transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 group">
+          <button
+            onClick={() => navegarParaSecao("contato")}
+            className="w-full sm:w-auto px-6 sm:px-8 md:px-10 py-3 sm:py-4 bg-transparent border-2 border-destaque text-destaque font-orbitron font-bold text-sm sm:text-base md:text-lg hover:bg-destaque hover:text-black transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 group"
+          >
             <span>Contato</span>
             <MdOutlineEmail className="text-lg sm:text-xl md:text-2xl transition-all duration-300 group-hover:scale-110 group-hover:rotate-12" />
           </button>

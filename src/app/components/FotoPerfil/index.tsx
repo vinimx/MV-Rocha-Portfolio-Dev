@@ -1,5 +1,4 @@
 import Image from "next/image";
-import fotoVinicius from "/public/assets/perfil.png";
 import BotoesSociais from "../BotoesSociais";
 
 const FotoPerfil = () => {
@@ -23,7 +22,7 @@ const FotoPerfil = () => {
             }}
           >
             <Image
-              src={fotoVinicius}
+              src="/assets/images/perfil.png"
               alt="Foto de perfil de Marcos Vinicius Rocha"
               width={384}
               height={384}
@@ -242,9 +241,6 @@ const FotoPerfil = () => {
                  `,
             }}
           ></div>
-
-          {/* Botões de redes sociais*/}
-
           <BotoesSociais />
         </div>
       </div>

@@ -235,13 +235,34 @@
     }
   }
 
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   @keyframes float {
     0%,
     100% {
       transform: translateY(0px);
     }
     50% {
-      transform: translateY(-20px);
+      transform: translateY(-5px);
+    }
+  }
+
+  @keyframes pulseGlow {
+    0%,
+    100% {
+      box-shadow: 0 0 5px currentColor;
+    }
+    50% {
+      box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
     }
   }
 
@@ -258,11 +279,11 @@
   }
 
   .animate-float {
-    animation: float 6s ease-in-out infinite !important;
+    animation: float 3s ease-in-out infinite !important;
   }
 
-  .animate-spin-slow {
-    animation: spin 8s linear infinite !important;
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
   }
 
   /* Melhorias para responsividade */

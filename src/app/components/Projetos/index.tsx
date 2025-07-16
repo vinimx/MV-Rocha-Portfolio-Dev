@@ -3,7 +3,6 @@ import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 
 const projetos = [
-  // ...existing code...
   {
     id: "1",
     titulo: "Sistema de Feedback",
@@ -137,7 +136,7 @@ export default function Projetos() {
         {/* Projetos em Destaque */}
         <div className="mb-20">
           <h3 className="text-xl md:text-2xl lg:text-3xl font-orbitron font-bold texto-neon mb-8 text-center">
-            🚀 PROJETOS EM DESTAQUE
+            PROJETOS EM DESTAQUE
           </h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {projetosDestaque.map((projeto) => (
@@ -153,6 +152,8 @@ export default function Projetos() {
                     src={projeto.imagem}
                     alt={projeto.titulo}
                     fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
                     className="object-cover"
                   />
 
@@ -218,7 +219,7 @@ export default function Projetos() {
         {/* Outros Projetos */}
         <div>
           <h3 className="text-xl md:text-2xl lg:text-3xl font-orbitron font-bold texto-neon mb-8 text-center">
-            💎 OUTROS PROJETOS
+            OUTROS PROJETOS
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
             {outrosProjetos.map((projeto) => (
@@ -234,6 +235,7 @@ export default function Projetos() {
                     src={projeto.imagem}
                     alt={projeto.titulo}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                     className="object-cover"
                   />
 

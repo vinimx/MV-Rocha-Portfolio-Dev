@@ -3,6 +3,7 @@ import {
   SiCss3,
   SiBootstrap,
   SiTailwindcss,
+  SiStyledcomponents,
   SiReact,
   SiTypescript,
   SiJavascript,
@@ -36,6 +37,11 @@ export default function Tecnologias() {
             {
               nome: "Tailwind CSS",
               icone: SiTailwindcss,
+              cor: "text-cyan-400",
+            },
+            {
+              nome: "Styled-Components",
+              icone: SiStyledcomponents,
               cor: "text-cyan-400",
             },
             {

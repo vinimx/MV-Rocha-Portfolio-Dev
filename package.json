@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@deemlol/next-icons": "^0.1.9",
+    "@emailjs/browser": "^4.4.1",
     "@types/three": "^0.178.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.23.6",
     "lucide-react": "^0.525.0",
     "next": "15.3.5",
     "react": "^19.0.0",
