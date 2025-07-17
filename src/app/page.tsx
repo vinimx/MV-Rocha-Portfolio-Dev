@@ -16,6 +16,9 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Só configura o observer quando não está carregando
+    if (isLoading) return;
+
     // Adiciona animação de "fade-in" às seções ao rolar a página
     const opcoesObservador = {
       threshold: 0.1,
@@ -39,7 +42,7 @@ export default function Home() {
     }, 100);
 
     return () => observador.disconnect();
-  }, []);
+  }, [isLoading]);
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
@@ -50,19 +53,22 @@ export default function Home() {
       {/* Componente de Carregamento */}
       {isLoading && <Carregando onComplete={handleLoadingComplete} />}
 
-      <main ref={refPrincipal} className="relative">
-        {/* Three.js Background */}
-        <div className="fixed inset-0 z-0">
-          <Background />
-        </div>
-        <MenuNav />
-        <Apresentacao />
-        <SobreMim />
-        <Tecnologias />
-        <Projetos />
-        <Contato />
-        <Rodape />
-      </main>
+      {/* Conteúdo principal só aparece após carregamento */}
+      {!isLoading && (
+        <main ref={refPrincipal} className="relative">
+          {/* Three.js Background */}
+          <div className="fixed inset-0 z-0">
+            <Background />
+          </div>
+          <MenuNav />
+          <Apresentacao />
+          <SobreMim />
+          <Tecnologias />
+          <Projetos />
+          <Contato />
+          <Rodape />
+        </main>
+      )}
     </>
   );
 }

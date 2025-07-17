@@ -14,11 +14,9 @@ const Carregando = ({ onComplete }: CarregandoProps) => {
 
   const etapas = useMemo(
     () => [
-      "Inicializando matriz...",
       "Carregando componentes...",
       "Ativando efeitos neon...",
       "Sincronizando synthwave...",
-      "Preparando experiência...",
       "Quase pronto...",
     ],
     []
