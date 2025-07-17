@@ -26,6 +26,27 @@ const Contato = () => {
     e.preventDefault();
     setEstaEnviando(true);
 
+    // Adicionar validação específica para mobile
+    if (
+      !dadosFormulario.nome.trim() ||
+      !dadosFormulario.email.trim() ||
+      !dadosFormulario.mensagem.trim()
+    ) {
+      setNotificacao({
+        visivel: true,
+        tipo: "erro",
+        mensagem: "Por favor, preencha todos os campos obrigatórios.",
+      });
+      setEstaEnviando(false);
+      return;
+    }
+
+    // Verificar se está em dispositivo móvel
+    const isMobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
+
     try {
       const resultado = await enviarEmail(dadosFormulario);
 
@@ -38,6 +59,48 @@ const Contato = () => {
         });
         setDadosFormulario({ nome: "", email: "", assunto: "", mensagem: "" });
       } else {
+        // Em mobile, oferecer alternativas se o email falhar
+        if (isMobile) {
+          setNotificacao({
+            visivel: true,
+            tipo: "erro",
+            mensagem:
+              "Erro no envio por email. Tente via WhatsApp ou copie os dados abaixo.",
+          });
+          // Auto-scroll para os botões alternativos
+          setTimeout(() => {
+            const whatsappBtn = document.querySelector("[data-whatsapp-btn]");
+            whatsappBtn?.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+          }, 1000);
+        } else {
+          setNotificacao({
+            visivel: true,
+            tipo: "erro",
+            mensagem:
+              "Erro ao enviar mensagem. Tente novamente ou entre em contato diretamente.",
+          });
+        }
+      }
+    } catch (error) {
+      console.error("Erro no envio:", error);
+
+      // Para mobile, sempre oferecer alternativa do WhatsApp
+      if (isMobile) {
+        setNotificacao({
+          visivel: true,
+          tipo: "erro",
+          mensagem:
+            "Problema no envio de email. Redirecionando para WhatsApp...",
+        });
+
+        // Auto-redirect para WhatsApp após 3 segundos
+        setTimeout(() => {
+          enviarViaWhatsApp(dadosFormulario);
+        }, 3000);
+      } else {
         setNotificacao({
           visivel: true,
           tipo: "erro",
@@ -45,14 +108,6 @@ const Contato = () => {
             "Erro ao enviar mensagem. Tente novamente ou entre em contato diretamente.",
         });
       }
-    } catch (error) {
-      console.error("Erro no envio:", error);
-      setNotificacao({
-        visivel: true,
-        tipo: "erro",
-        mensagem:
-          "Erro ao enviar mensagem. Tente novamente ou entre em contato diretamente.",
-      });
     } finally {
       setEstaEnviando(false);
     }
@@ -218,15 +273,54 @@ const Contato = () => {
                   )}
                 </button>
 
-                {/* Botões Alternativos */}
+                {/* Botões Alternativos - Melhorar para mobile */}
                 <div className="flex flex-col sm:flex-row gap-3">
                   <button
                     type="button"
+                    data-whatsapp-btn
                     onClick={() => enviarViaWhatsApp(dadosFormulario)}
                     className="flex-1 py-3 px-4 font-orbitron font-bold uppercase tracking-wider transition-all duration-300 rounded-lg border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white flex items-center justify-center gap-2 text-sm"
                   >
                     <Phone size={16} />
                     VIA WHATSAPP
+                  </button>
+
+                  {/* Novo botão para copiar dados em mobile */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const dados = `Nome: ${dadosFormulario.nome}\nEmail: ${dadosFormulario.email}\nAssunto: ${dadosFormulario.assunto}\nMensagem: ${dadosFormulario.mensagem}`;
+                      navigator.clipboard
+                        .writeText(dados)
+                        .then(() => {
+                          setNotificacao({
+                            visivel: true,
+                            tipo: "sucesso",
+                            mensagem:
+                              "Dados copiados! Cole no seu app de email favorito.",
+                          });
+                        })
+                        .catch(() => {
+                          // Fallback para dispositivos que não suportam clipboard
+                          const textArea = document.createElement("textarea");
+                          textArea.value = dados;
+                          document.body.appendChild(textArea);
+                          textArea.select();
+                          document.execCommand("copy");
+                          document.body.removeChild(textArea);
+
+                          setNotificacao({
+                            visivel: true,
+                            tipo: "sucesso",
+                            mensagem:
+                              "Dados copiados! Cole no seu app de email favorito.",
+                          });
+                        });
+                    }}
+                    className="flex-1 py-3 px-4 font-orbitron font-bold uppercase tracking-wider transition-all duration-300 rounded-lg border-2 border-[#00f5ff] text-[#00f5ff] hover:bg-[#00f5ff] hover:text-black flex items-center justify-center gap-2 text-sm"
+                  >
+                    <Mail size={16} />
+                    COPIAR DADOS
                   </button>
                 </div>
               </form>
