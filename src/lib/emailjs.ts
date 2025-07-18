@@ -5,9 +5,17 @@ const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
 const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
 const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
 
-// Verificar se as variáveis estão definidas
-if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
-  console.error("Variáveis do EmailJS não configuradas corretamente");
+// Verificar se as variáveis estão definidas apenas em desenvolvimento
+if (process.env.NODE_ENV === "development") {
+  if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+    console.warn("⚠️ Variáveis do EmailJS não configuradas:", {
+      SERVICE_ID: EMAILJS_SERVICE_ID ? "✅ Configurado" : "❌ Não configurado",
+      TEMPLATE_ID: EMAILJS_TEMPLATE_ID
+        ? "✅ Configurado"
+        : "❌ Não configurado",
+      PUBLIC_KEY: EMAILJS_PUBLIC_KEY ? "✅ Configurado" : "❌ Não configurado",
+    });
+  }
 }
 
 export interface DadosEmail {
@@ -26,6 +34,14 @@ export const enviarEmail = async (
       return {
         success: false,
         error: "Não é possível enviar email no servidor",
+      };
+    }
+
+    // Verificar se as variáveis estão configuradas
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      return {
+        success: false,
+        error: "EmailJS não configurado. Verifique as variáveis de ambiente.",
       };
     }
 
