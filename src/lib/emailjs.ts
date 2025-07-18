@@ -5,16 +5,19 @@ const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
 const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
 const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
 
-// Verificar se as variáveis estão definidas apenas em desenvolvimento
-if (process.env.NODE_ENV === "development") {
-  if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
-    console.warn("⚠️ Variáveis do EmailJS não configuradas:", {
-      SERVICE_ID: EMAILJS_SERVICE_ID ? "✅ Configurado" : "❌ Não configurado",
-      TEMPLATE_ID: EMAILJS_TEMPLATE_ID
-        ? "✅ Configurado"
-        : "❌ Não configurado",
-      PUBLIC_KEY: EMAILJS_PUBLIC_KEY ? "✅ Configurado" : "❌ Não configurado",
-    });
+// Verificar se as variáveis estão definidas
+if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+  console.warn("⚠️ Variáveis do EmailJS não configuradas:", {
+    SERVICE_ID: EMAILJS_SERVICE_ID ? "✅ Configurado" : "❌ Não configurado",
+    TEMPLATE_ID: EMAILJS_TEMPLATE_ID ? "✅ Configurado" : "❌ Não configurado",
+    PUBLIC_KEY: EMAILJS_PUBLIC_KEY ? "✅ Configurado" : "❌ Não configurado",
+  });
+
+  if (process.env.NODE_ENV === "development") {
+    console.error("🚨 Para usar o EmailJS:");
+    console.error("1. Copie o arquivo .env.local.example para .env.local");
+    console.error("2. Preencha com suas credenciais do EmailJS");
+    console.error("3. Reinicie o servidor de desenvolvimento");
   }
 }
 
@@ -39,9 +42,11 @@ export const enviarEmail = async (
 
     // Verificar se as variáveis estão configuradas
     if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      console.error("❌ EmailJS não configurado corretamente");
       return {
         success: false,
-        error: "EmailJS não configurado. Verifique as variáveis de ambiente.",
+        error:
+          "Sistema de email não configurado. Entre em contato via WhatsApp ou telefone.",
       };
     }
 
