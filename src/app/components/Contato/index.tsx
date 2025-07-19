@@ -84,9 +84,7 @@ const Contato = () => {
           });
         }
       }
-    } catch (error) {
-      console.error("Erro no envio:", error);
-
+    } catch {
       // Para mobile, sempre oferecer alternativa do WhatsApp
       if (isMobile) {
         setNotificacao({
