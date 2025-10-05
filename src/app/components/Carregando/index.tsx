@@ -134,7 +134,7 @@ const Carregando = ({ onComplete }: CarregandoProps) => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.7 }}
             >
-              DESENVOLVEDOR FRONT-END
+              DESENVOLVEDOR FULL STACK
             </motion.p>
 
             {/* Barra de progresso */}
