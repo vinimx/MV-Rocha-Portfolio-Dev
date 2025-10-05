@@ -21,8 +21,8 @@ export default function SobreMim() {
                   <span className="texto-neon-ciano font-bold text-lg lg:text-2xl">
                     Marcos Vinicius Rocha
                   </span>
-                  , um desenvolvedor Front-End focado em criar interfaces
-                  modernas, funcionais e envolventes.
+                  , um desenvolvedor Full Stack focado em criar interfaces
+                  modernas e APIs escaláveis.
                 </p>
 
                 <p className="text-texto-principal">
