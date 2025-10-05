@@ -10,6 +10,11 @@ import {
   SiNextdotjs,
   SiGit,
   SiGithub,
+  SiNodedotjs,
+  SiExpress,
+  SiPostgresql,
+  SiMongodb,
+  SiSupabase,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 
@@ -54,9 +59,14 @@ export default function Tecnologias() {
               icone: SiTypescript,
               cor: "text-blue-600",
             },
-            { nome: "Java", icone: FaJava, cor: "text-red-600" },
             { nome: "React", icone: SiReact, cor: "text-blue-400" },
+            { nome: "Node.js", icone: SiNodedotjs, cor: "text-green-600" },
+            { nome: "Express", icone: SiExpress, cor: "text-gray-800" },
+            { nome: "PostgreSQL", icone: SiPostgresql, cor: "text-blue-800" },
+            { nome: "MongoDB", icone: SiMongodb, cor: "text-green-500" },
+            { nome: "Supabase", icone: SiSupabase, cor: "text-green-400" },
             { nome: "Next.js", icone: SiNextdotjs, cor: "text-white" },
+            { nome: "Java", icone: FaJava, cor: "text-red-600" },
             { nome: "Git", icone: SiGit, cor: "text-orange-600" },
             { nome: "GitHub", icone: SiGithub, cor: "text-gray-400" },
           ].map((tecnologia) => {
