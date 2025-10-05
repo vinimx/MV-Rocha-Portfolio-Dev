@@ -61,7 +61,7 @@ export default function Apresentacao() {
             ref={subtituloRef}
             className="text-base sm:text-lg md:text-2xl lg:text-3xl font-orbitron font-bold text-texto-principal mt-6 sm:mt-8 md:mt-10 opacity-0 transform translate-y-10 transition-all duration-1000"
           >
-            DESENVOLVEDOR FRONT-END
+            DESENVOLVEDOR FULL STACK
           </p>
 
           <p
