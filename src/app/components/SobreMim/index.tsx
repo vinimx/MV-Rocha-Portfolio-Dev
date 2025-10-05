@@ -43,11 +43,11 @@ export default function SobreMim() {
                   ,
                 </p>
                 <p className="text-texto-principal">
-                  Iniciei recentemente meus estudos em back-end com{" "}
+                  Iniciei recentemente meus estudos em{" "}
                   <span className="texto-neon-ciano font-bold text-lg lg:text-2xl">
                     Java
                   </span>{" "}
-                  visando me tornar um desenvolvedor full-stack.
+                  visando novas experiências em uma nova linguagem.
                 </p>
 
                 <p className="text-texto-principal">
